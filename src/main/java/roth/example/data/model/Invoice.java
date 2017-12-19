@@ -14,7 +14,7 @@ public class Invoice extends MysqlDbModel {
 	protected transient Db db;
 
 	@Property(name = "id", id = true, generated = true)
-	protected Integer id;
+	protected int id;
 
 	@Property(name = "invoiceNumber")
 	protected String invoiceNumber;
@@ -26,7 +26,7 @@ public class Invoice extends MysqlDbModel {
 	protected boolean paid;
 
 	@Property(name = "personId")
-	protected Integer personId;
+	protected int personId;
 
 	// Default constructor
 	public Invoice() {
@@ -47,7 +47,7 @@ public class Invoice extends MysqlDbModel {
 	}
 
 	// Setters and getters
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -75,11 +75,11 @@ public class Invoice extends MysqlDbModel {
 		this.paid = setDirty("paid", this.paid, paid);
 	}
 
-	public Integer getPersonId() {
+	public int getPersonId() {
 		return personId;
 	}
 
-	public void setPersonId(Integer personId) {
+	public void setPersonId(int personId) {
 		this.personId = setDirty("personId", this.personId, personId);
 	}
 

@@ -16,7 +16,7 @@ public class CreditCard extends MysqlDbModel {
 	protected transient Db db;
 
 	@Property(name = "id", id = true, generated = true)
-	protected Integer id;
+	protected int id;
 
 	@Property(name = "cardNumber")
 	protected String cardNumber;
@@ -28,7 +28,7 @@ public class CreditCard extends MysqlDbModel {
 	protected Date expirationDate;
 
 	@Property(name = "personId")
-	protected Integer personId;
+	protected int personId;
 
 	// Default constructor
 	public CreditCard() {
@@ -50,7 +50,7 @@ public class CreditCard extends MysqlDbModel {
 	}
 
 	// Setters and getters
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -78,11 +78,11 @@ public class CreditCard extends MysqlDbModel {
 		this.expirationDate = setDirty("expirationDate", this.expirationDate, expirationDate);
 	}
 
-	public Integer getPersonId() {
+	public int getPersonId() {
 		return personId;
 	}
 
-	public void setPersonId(Integer personId) {
+	public void setPersonId(int personId) {
 		this.personId = setDirty("personId", this.personId, personId);
 	}
 

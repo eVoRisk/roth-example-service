@@ -16,7 +16,7 @@ public class DrivingLicense extends MysqlDbModel {
 	protected transient Db db;
 
 	@Property(name = "id", id = true, generated = true)
-	protected Integer id;
+	protected int id;
 	
 	@Property(name="licenseNumber")
 	protected String licenseNumber;
@@ -25,7 +25,7 @@ public class DrivingLicense extends MysqlDbModel {
 	protected Date issueDate;
 	
 	@Property(name="personId")
-	protected Integer personId;
+	protected int personId;
 	
 	// Default constructor
 	public DrivingLicense() {
@@ -47,7 +47,7 @@ public class DrivingLicense extends MysqlDbModel {
 	}
 
 	// Setters and getters
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -67,11 +67,11 @@ public class DrivingLicense extends MysqlDbModel {
 		this.issueDate = setDirty("issueDate", this.issueDate, issueDate);
 	}
 
-	public Integer getPersonId() {
+	public int getPersonId() {
 		return personId;
 	}
 
-	public void setPersonId(Integer personId) {
+	public void setPersonId(int personId) {
 		this.personId = setDirty("personId", this.personId, personId);
 	}
 	
