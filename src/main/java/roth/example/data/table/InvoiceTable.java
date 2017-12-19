@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import roth.example.data.Db;
 import roth.example.data.model.Invoice;
+import roth.example.service.test.PostInvoiceRequest;
 import roth.lib.java.jdbc.Jdbc;
 import roth.lib.java.jdbc.mysql.MysqlDbTable;
 import roth.lib.java.jdbc.sql.Select;
@@ -52,5 +53,17 @@ public class InvoiceTable extends MysqlDbTable<Invoice> {
 		select.whereGreaterThan("totalAmount", totalAmount).whereEquals("paid", 1);
 		
 		return findAllBy(select);
+	}
+	
+	public void insertInvoice(PostInvoiceRequest request) {
+		Invoice invoice = new Invoice(db);
+		
+		invoice.setInvoiceNumber(request.getInvoiceNumber());
+		invoice.setTotalAmount(request.getTotalAmount());
+		invoice.setPaid(request.isPaid());
+		invoice.setPersonId(request.getPersonId());
+		
+		invoice.insert();
+		
 	}
 }

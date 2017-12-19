@@ -201,4 +201,10 @@ public class TestService extends roth.example.service.Service {
 		return response;
 	}
 	
+	// Insert data into models
+	@ServiceMethod(api = true, ajax = false)
+	public void postInvoice(PostInvoiceRequest request) {
+		InvoiceTable.get(db).insertInvoice(request);
+	}
+	
 }

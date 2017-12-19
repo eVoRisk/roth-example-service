@@ -31,7 +31,11 @@ public class Invoice extends MysqlDbModel {
 	// Default constructor
 	public Invoice() {
 	}
-
+	
+	public Invoice(Db db) {
+		this.db = db;
+	}
+	
 	// Overridden methods
 	@Override
 	public Jdbc getDb() {

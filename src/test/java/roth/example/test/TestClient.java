@@ -10,6 +10,8 @@ import roth.example.service.test.GetInvoiceRequest;
 import roth.example.service.test.GetInvoiceResponse;
 import roth.example.service.test.GetPersonRequest;
 import roth.example.service.test.GetPersonResponse;
+import roth.example.service.test.PostInvoiceRequest;
+import roth.example.service.test.PostInvoiceResponse;
 import roth.lib.java.api.JsonApiClient;
 import roth.lib.java.http.HttpUrl;
 
@@ -66,6 +68,11 @@ public class TestClient extends JsonApiClient<Object, Object> {
 
 	public GetDrivingLicenseResponse getDrivingLicenseByNumber(GetDrivingLicenseRequest request) {
 		return post(url().addPath("getDrivingLicenseByNumber"), request, GetDrivingLicenseResponse.class);
+	}
+	
+	// Insert data into models
+	public PostInvoiceResponse postInvoice(PostInvoiceRequest request) {
+		return post(url().addPath("postInvoice"), request);
 	}
 
 }

@@ -10,6 +10,7 @@ import roth.example.service.test.GetCreditCardRequest;
 import roth.example.service.test.GetDrivingLicenseRequest;
 import roth.example.service.test.GetInvoiceRequest;
 import roth.example.service.test.GetPersonRequest;
+import roth.example.service.test.PostInvoiceRequest;
 
 public class Test {
 	protected static TestClient client = new TestClient();
@@ -26,7 +27,9 @@ public class Test {
 
 		// creditCardServiceCalls();
 
-		drivingLicenseServiceCalls();
+		// drivingLicenseServiceCalls();
+		
+		postInvoice();
 
 	}
 
@@ -103,5 +106,19 @@ public class Test {
 		getDrivingLicenseById();
 		getBy("NUMBER");
 		getDrivingLicenseByNumber();
+	}
+	
+	// Insert data into models
+	public static void postInvoice() {
+		PostInvoiceRequest request = new PostInvoiceRequest();
+		
+		request.setId(50);
+		request.setInvoiceNumber("34500");
+		request.setTotalAmount(100.0);
+		request.setPaid(true);
+		request.setPersonId(1);
+		
+		client.postInvoice(request);
+		
 	}
 }
