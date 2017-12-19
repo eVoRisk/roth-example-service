@@ -40,14 +40,14 @@ public class InvoiceTable extends MysqlDbTable<Invoice> {
 		return findBy(select);
 	}
 	
-	public LinkedList<Invoice> findAllByPersonId(String personId) {
+	public LinkedList<Invoice> findAllByPersonId(int personId) {
 		Select select = select();
 		select.whereEquals("personId", personId);
 		
 		return findAllBy(select);
 	}
 	
-	public LinkedList<Invoice> findAllByTotalAmountPaid(Double totalAmount) {
+	public LinkedList<Invoice> findAllWithTotalAmountPaidGreaterThan(Double totalAmount) {
 		Select select = select();
 		select.whereGreaterThan("totalAmount", totalAmount).whereEquals("paid", 1);
 		
