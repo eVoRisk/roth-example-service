@@ -38,11 +38,11 @@ public class TestClient extends JsonApiClient<Object, Object>
 	}
 	
 	public LinkedList<GetInvoiceResponse> getAllInvoicesByPersonId(GetInvoiceRequest request) {
-		return post(url().addPath("getAllInvoicesByPersonId"), request, GetInvoiceResponse.class);
+		return post(url().addPath("getAllInvoicesByPersonId"), request, LinkedList.class);
 	}
 	
 	public LinkedList<GetInvoiceResponse> getAllInvoicesWithTotalAmountPaidGreaterThan(GetInvoiceRequest request) {
-		return post(url().addPath("getAllInvoicesWithTotalAmountPaidGreaterThan"), request, GetInvoiceResponse.class);
+		return post(url().addPath("getAllInvoicesWithTotalAmountPaidGreaterThan"), request, LinkedList.class);
 	}
 	
 	

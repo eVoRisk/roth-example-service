@@ -15,9 +15,9 @@ public class Test {
 	public static void main(String[] args) throws Exception {
 
 		// getPerson();
-		
+
 		invoiceServiceCalls();
-		
+
 	}
 
 	public static void getPerson() {
@@ -34,7 +34,7 @@ public class Test {
 	}
 
 	public static void getAllInvoicesByPersonId() {
-		client.getAllInvoicesByPersonId(new GetInvoiceRequest().setId(3));
+		client.getAllInvoicesByPersonId(new GetInvoiceRequest().setPersonId(3));
 	}
 
 	public static void getAllInvoicesWithTotalAmountPaidGreaterThan() {
@@ -47,9 +47,9 @@ public class Test {
 		getInvoiceById();
 		getBy("NUMBER");
 		getInvoiceByNumber();
-		// getBy("PERSON ID");
-		// getAllInvoicesByPersonId();
-		// getBy("TOTAL AMOUNT GREATER THAN")
-		// getAllInvoicesWithTotalAmountPaidGreaterThan();
+		getBy("PERSON ID");
+		getAllInvoicesByPersonId();
+		getBy("TOTAL AMOUNT GREATER THAN");
+		getAllInvoicesWithTotalAmountPaidGreaterThan();
 	}
 }
