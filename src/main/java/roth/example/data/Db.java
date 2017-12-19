@@ -14,7 +14,7 @@ public class Db extends MysqlDb
 	protected Db()
 	{
 		//Put your Db parameters here if different
-		super("com.mysql.jdbc.Driver", "jdbc:mysql://127.0.0.1/rothexample", "root", "");
+		super("com.mysql.jdbc.Driver", "jdbc:mysql://127.0.0.1/rothexample", "root", "password");
 		setLogWriter(new PrintWriter(System.out, true));
 	}
 }
