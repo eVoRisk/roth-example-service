@@ -2,8 +2,10 @@ package roth.example.service.test;
 
 import java.util.LinkedList;
 
+import roth.example.data.model.CreditCard;
 import roth.example.data.model.Invoice;
 import roth.example.data.model.Person;
+import roth.example.data.table.CreditCardTable;
 import roth.example.data.table.InvoiceTable;
 import roth.example.data.table.PersonTable;
 import roth.lib.java.service.annotation.Service;
@@ -30,6 +32,7 @@ public class TestService extends roth.example.service.Service {
 	// Service methods for INVOICE
 	@ServiceMethod(api = true, ajax = false)
 	public GetInvoiceResponse getInvoiceById(GetInvoiceRequest request) {
+		
 		GetInvoiceResponse response = new GetInvoiceResponse();
 		Invoice invoice = InvoiceTable.get(db).findById(request.getId());
 
@@ -44,6 +47,7 @@ public class TestService extends roth.example.service.Service {
 
 	@ServiceMethod(api = true, ajax = false)
 	public GetInvoiceResponse getInvoiceByNumber(GetInvoiceRequest request) {
+		
 		GetInvoiceResponse response = new GetInvoiceResponse();
 		Invoice invoice = InvoiceTable.get(db).findByInvoiceNumber(request.getInvoiceNumber());
 
@@ -58,6 +62,7 @@ public class TestService extends roth.example.service.Service {
 
 	@ServiceMethod(api = true, ajax = false)
 	public LinkedList<GetInvoiceResponse> getAllInvoicesByPersonId(GetInvoiceRequest request) {
+		
 		LinkedList<Invoice> invoices = InvoiceTable.get(db).findAllByPersonId(request.getPersonId());
 
 		LinkedList<GetInvoiceResponse> responses = new LinkedList<GetInvoiceResponse>();
@@ -78,13 +83,15 @@ public class TestService extends roth.example.service.Service {
 
 		return responses;
 	}
-	
+
 	@ServiceMethod(api = true, ajax = false)
 	public LinkedList<GetInvoiceResponse> getAllInvoicesWithTotalAmountPaidGreaterThan(GetInvoiceRequest request) {
-		LinkedList<Invoice> invoices = InvoiceTable.get(db).findAllWithTotalAmountPaidGreaterThan(request.getTotalAmount());
+		
+		LinkedList<Invoice> invoices = InvoiceTable.get(db)
+				.findAllWithTotalAmountPaidGreaterThan(request.getTotalAmount());
 
 		LinkedList<GetInvoiceResponse> responses = new LinkedList<GetInvoiceResponse>();
-		
+
 		if (invoices != null) {
 			GetInvoiceResponse response = null;
 
@@ -102,4 +109,60 @@ public class TestService extends roth.example.service.Service {
 		return responses;
 	}
 
+	// Service methods for CREDIT CARD
+	@ServiceMethod(api = true, ajax = false)
+	public GetCreditCardResponse getCreditCardById(GetCreditCardRequest request) {
+		
+		GetCreditCardResponse response = new GetCreditCardResponse();
+		CreditCard creditCard = CreditCardTable.get(db).findById(request.getId());
+
+		if (creditCard != null) {
+			response.setId(creditCard.getId()).setCardNumber(creditCard.getCardNumber())
+					.setSecurityCode(creditCard.getSecurityCode()).setExpirationDate(creditCard.getExpirationDate())
+					.setPersonId(creditCard.getPersonId());
+		}
+
+		return response;
+	}
+
+	@ServiceMethod(api = true, ajax = false)
+	public GetCreditCardResponse getCreditCardByNumber(GetCreditCardRequest request) {
+		
+		GetCreditCardResponse response = new GetCreditCardResponse();
+		CreditCard creditCard = CreditCardTable.get(db).findByCardNumber(request.getCardNumber());
+
+		if (creditCard != null) {
+			response.setId(creditCard.getId()).setCardNumber(creditCard.getCardNumber())
+					.setSecurityCode(creditCard.getSecurityCode()).setExpirationDate(creditCard.getExpirationDate())
+					.setPersonId(creditCard.getPersonId());
+		}
+
+		return response;
+	}
+
+	@ServiceMethod(api = true, ajax = false)
+	public LinkedList<GetCreditCardResponse> getAllCreditCardWithExpirationDateGreaterThanOrEquals(
+			GetCreditCardRequest request) {
+		
+		LinkedList<CreditCard> creditCards = CreditCardTable.get(db)
+				.findAllByExpirationDateGreaterThanOrEquals(request.getExpirationDate());
+
+		LinkedList<GetCreditCardResponse> responses = new LinkedList<GetCreditCardResponse>();
+
+		if (creditCards != null) {
+			GetCreditCardResponse response = null;
+
+			for (CreditCard creditCard : creditCards) {
+				response = new GetCreditCardResponse();
+
+				response.setId(creditCard.getId()).setCardNumber(creditCard.getCardNumber())
+						.setSecurityCode(creditCard.getSecurityCode()).setExpirationDate(creditCard.getExpirationDate())
+						.setPersonId(creditCard.getPersonId());
+
+				responses.add(response);
+			}
+		}
+
+		return responses;
+	}
 }

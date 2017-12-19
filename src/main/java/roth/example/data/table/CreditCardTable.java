@@ -41,7 +41,7 @@ public class CreditCardTable extends MysqlDbTable<CreditCard> {
 		return findBy(select);
 	}
 	
-	public LinkedList<CreditCard> findAllByExpirationDate(Date expirationDate) {
+	public LinkedList<CreditCard> findAllByExpirationDateGreaterThanOrEquals(Date expirationDate) {
 		Select select = select();
 		select.whereGreaterThanOrEquals("expirationDate", expirationDate);
 		

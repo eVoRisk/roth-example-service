@@ -2,6 +2,11 @@ package roth.example.test;
 
 import static roth.example.test.TrustUtil.delimiterFor;
 import static roth.example.test.TrustUtil.getBy;
+
+import java.sql.Date;
+import java.time.LocalDate;
+
+import roth.example.service.test.GetCreditCardRequest;
 import roth.example.service.test.GetInvoiceRequest;
 import roth.example.service.test.GetPersonRequest;
 
@@ -16,7 +21,9 @@ public class Test {
 
 		// getPerson();
 
-		invoiceServiceCalls();
+		// invoiceServiceCalls();
+		
+		creditCardServiceCalls();
 
 	}
 
@@ -51,5 +58,29 @@ public class Test {
 		getAllInvoicesByPersonId();
 		getBy("TOTAL AMOUNT GREATER THAN");
 		getAllInvoicesWithTotalAmountPaidGreaterThan();
+	}
+	
+	// Credit card service calls
+	public static void getCreditCardById() {
+		client.getCreditCardById(new GetCreditCardRequest().setId(4));
+	}
+	
+	public static void getCreditCardByNumber() {
+		client.getCreditCardByNumber(new GetCreditCardRequest().setCardNumber("9480 0012 7722 9223"));
+	}
+	
+	public static void getAllCreditCardWithExpirationDateGreaterThanOrEquals() {
+		LocalDate date = LocalDate.of(2020, 10, 10);
+		client.getAllCreditCardWithExpirationDateGreaterThanOrEquals(new GetCreditCardRequest().setExpirationDate(Date.valueOf(date)));
+	}
+	
+	public static void creditCardServiceCalls() {
+		delimiterFor("Credit Card");
+		getBy("ID");
+		getCreditCardById();
+		getBy("NUMBER");
+		getCreditCardByNumber();
+		getBy("EXPIRATION DATE GREATER THAN OR EQUALS");
+		getAllCreditCardWithExpirationDateGreaterThanOrEquals();
 	}
 }
