@@ -1,5 +1,6 @@
 CREATE DATABASE rothexample;
 USE rothexample;
+
 CREATE TABLE rothexample.person
 (
   `id` INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,

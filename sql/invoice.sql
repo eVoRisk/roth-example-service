@@ -51,7 +51,7 @@ insert into rothexample.invoice (invoiceNumber, totalAmount, paid, personId) val
 insert into rothexample.invoice (invoiceNumber, totalAmount, paid, personId) values ('97354', 285, 1, 10);
 
 insert into rothexample.invoice (invoiceNumber, totalAmount, paid, personId) values ('67006', 700, 1, 11);
-insert into rothexample.invoice (invoiceNumber, totalAmount, personId) values ('12998', 400, 11);
+insert into rothexample.invoice (invoiceNumber, totalAmount, personId) values ('12967', 400, 11);
 
 insert into rothexample.invoice (invoiceNumber, totalAmount, paid, personId) values ('19233', 240, 1, 12);
 insert into rothexample.invoice (invoiceNumber, totalAmount, paid, personId) values ('92726', 50, 1, 12);
