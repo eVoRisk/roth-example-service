@@ -11,7 +11,6 @@ CREATE TABLE rothexample.credit_card (
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 insert into rothexample.credit_card (cardNumber, securityCode, expirationDate, personId) values ('1212 4563 8123 1231', '173', '2020-10-12', 1);
-insert into rothexample.credit_card (cardNumber, securityCode, expirationDate, personId) values ('1290 8000 8145 1012', '903', '2022-12-15', 1);
 
 insert into rothexample.credit_card (cardNumber, securityCode, expirationDate, personId) values ('4664 4989 0900 1200', '892', '2021-09-23', 2);
 
