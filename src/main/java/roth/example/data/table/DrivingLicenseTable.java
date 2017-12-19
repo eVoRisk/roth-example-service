@@ -41,13 +41,4 @@ public class DrivingLicenseTable extends MysqlDbTable<DrivingLicense> {
 		return findBy(select);
 	}
 
-	public LinkedList<DrivingLicense> findAllByIssueDateAndLicenseNumber(Date startIssueDate, Date endIssueDate,
-			String missingNumberFromLicenseNumber) {
-		Select select = select();
-		select.whereBetween("issueDate", startIssueDate, endIssueDate).whereNotLike("licenseNumber",
-				"%" + missingNumberFromLicenseNumber + "%");
-
-		return findAllBy(select);
-	}
-
 }

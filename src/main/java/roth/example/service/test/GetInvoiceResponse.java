@@ -8,7 +8,7 @@ import roth.lib.java.service.HttpServiceResponse;
 @SuppressWarnings("serial")
 public class GetInvoiceResponse extends HttpServiceResponse {
 
-	@Property(name = "id", id = true, generated = true)
+	@Property(name = "id")
 	protected int id;
 
 	@Property(name = "invoiceNumber")

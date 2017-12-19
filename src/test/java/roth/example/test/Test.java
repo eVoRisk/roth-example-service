@@ -7,6 +7,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 import roth.example.service.test.GetCreditCardRequest;
+import roth.example.service.test.GetDrivingLicenseRequest;
 import roth.example.service.test.GetInvoiceRequest;
 import roth.example.service.test.GetPersonRequest;
 
@@ -22,8 +23,10 @@ public class Test {
 		// getPerson();
 
 		// invoiceServiceCalls();
-		
-		creditCardServiceCalls();
+
+		// creditCardServiceCalls();
+
+		drivingLicenseServiceCalls();
 
 	}
 
@@ -59,21 +62,22 @@ public class Test {
 		getBy("TOTAL AMOUNT GREATER THAN");
 		getAllInvoicesWithTotalAmountPaidGreaterThan();
 	}
-	
-	// Credit card service calls
+
+	// Credit Card service calls
 	public static void getCreditCardById() {
 		client.getCreditCardById(new GetCreditCardRequest().setId(4));
 	}
-	
+
 	public static void getCreditCardByNumber() {
 		client.getCreditCardByNumber(new GetCreditCardRequest().setCardNumber("9480 0012 7722 9223"));
 	}
-	
+
 	public static void getAllCreditCardWithExpirationDateGreaterThanOrEquals() {
 		LocalDate date = LocalDate.of(2020, 10, 10);
-		client.getAllCreditCardWithExpirationDateGreaterThanOrEquals(new GetCreditCardRequest().setExpirationDate(Date.valueOf(date)));
+		client.getAllCreditCardWithExpirationDateGreaterThanOrEquals(
+				new GetCreditCardRequest().setExpirationDate(Date.valueOf(date)));
 	}
-	
+
 	public static void creditCardServiceCalls() {
 		delimiterFor("Credit Card");
 		getBy("ID");
@@ -82,5 +86,22 @@ public class Test {
 		getCreditCardByNumber();
 		getBy("EXPIRATION DATE GREATER THAN OR EQUALS");
 		getAllCreditCardWithExpirationDateGreaterThanOrEquals();
+	}
+
+	// Driving License service calls
+	public static void getDrivingLicenseById() {
+		client.getDrivingLicenseById(new GetDrivingLicenseRequest().setId(6));
+	}
+
+	public static void getDrivingLicenseByNumber() {
+		client.getDrivingLicenseByNumber(new GetDrivingLicenseRequest().setLicenseNumber("8122452"));
+	}
+
+	public static void drivingLicenseServiceCalls() {
+		delimiterFor("Driving License");
+		getBy("ID");
+		getDrivingLicenseById();
+		getBy("NUMBER");
+		getDrivingLicenseByNumber();
 	}
 }

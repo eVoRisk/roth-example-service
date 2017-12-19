@@ -4,6 +4,8 @@ import java.util.LinkedList;
 
 import roth.example.service.test.GetCreditCardRequest;
 import roth.example.service.test.GetCreditCardResponse;
+import roth.example.service.test.GetDrivingLicenseRequest;
+import roth.example.service.test.GetDrivingLicenseResponse;
 import roth.example.service.test.GetInvoiceRequest;
 import roth.example.service.test.GetInvoiceResponse;
 import roth.example.service.test.GetPersonRequest;
@@ -55,6 +57,15 @@ public class TestClient extends JsonApiClient<Object, Object> {
 	public LinkedList<GetCreditCardResponse> getAllCreditCardWithExpirationDateGreaterThanOrEquals(
 			GetCreditCardRequest request) {
 		return post(url().addPath("getAllCreditCardWithExpirationDateGreaterThanOrEquals"), request, LinkedList.class);
+	}
+
+	// Driving License
+	public GetDrivingLicenseResponse getDrivingLicenseById(GetDrivingLicenseRequest request) {
+		return post(url().addPath("getDrivingLicenseById"), request, GetDrivingLicenseResponse.class);
+	}
+
+	public GetDrivingLicenseResponse getDrivingLicenseByNumber(GetDrivingLicenseRequest request) {
+		return post(url().addPath("getDrivingLicenseByNumber"), request, GetDrivingLicenseResponse.class);
 	}
 
 }

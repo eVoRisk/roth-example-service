@@ -1,11 +1,15 @@
 package roth.example.service.test;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.LinkedList;
 
 import roth.example.data.model.CreditCard;
+import roth.example.data.model.DrivingLicense;
 import roth.example.data.model.Invoice;
 import roth.example.data.model.Person;
 import roth.example.data.table.CreditCardTable;
+import roth.example.data.table.DrivingLicenseTable;
 import roth.example.data.table.InvoiceTable;
 import roth.example.data.table.PersonTable;
 import roth.lib.java.service.annotation.Service;
@@ -32,7 +36,7 @@ public class TestService extends roth.example.service.Service {
 	// Service methods for INVOICE
 	@ServiceMethod(api = true, ajax = false)
 	public GetInvoiceResponse getInvoiceById(GetInvoiceRequest request) {
-		
+
 		GetInvoiceResponse response = new GetInvoiceResponse();
 		Invoice invoice = InvoiceTable.get(db).findById(request.getId());
 
@@ -47,7 +51,7 @@ public class TestService extends roth.example.service.Service {
 
 	@ServiceMethod(api = true, ajax = false)
 	public GetInvoiceResponse getInvoiceByNumber(GetInvoiceRequest request) {
-		
+
 		GetInvoiceResponse response = new GetInvoiceResponse();
 		Invoice invoice = InvoiceTable.get(db).findByInvoiceNumber(request.getInvoiceNumber());
 
@@ -62,7 +66,7 @@ public class TestService extends roth.example.service.Service {
 
 	@ServiceMethod(api = true, ajax = false)
 	public LinkedList<GetInvoiceResponse> getAllInvoicesByPersonId(GetInvoiceRequest request) {
-		
+
 		LinkedList<Invoice> invoices = InvoiceTable.get(db).findAllByPersonId(request.getPersonId());
 
 		LinkedList<GetInvoiceResponse> responses = new LinkedList<GetInvoiceResponse>();
@@ -86,7 +90,7 @@ public class TestService extends roth.example.service.Service {
 
 	@ServiceMethod(api = true, ajax = false)
 	public LinkedList<GetInvoiceResponse> getAllInvoicesWithTotalAmountPaidGreaterThan(GetInvoiceRequest request) {
-		
+
 		LinkedList<Invoice> invoices = InvoiceTable.get(db)
 				.findAllWithTotalAmountPaidGreaterThan(request.getTotalAmount());
 
@@ -112,7 +116,7 @@ public class TestService extends roth.example.service.Service {
 	// Service methods for CREDIT CARD
 	@ServiceMethod(api = true, ajax = false)
 	public GetCreditCardResponse getCreditCardById(GetCreditCardRequest request) {
-		
+
 		GetCreditCardResponse response = new GetCreditCardResponse();
 		CreditCard creditCard = CreditCardTable.get(db).findById(request.getId());
 
@@ -127,7 +131,7 @@ public class TestService extends roth.example.service.Service {
 
 	@ServiceMethod(api = true, ajax = false)
 	public GetCreditCardResponse getCreditCardByNumber(GetCreditCardRequest request) {
-		
+
 		GetCreditCardResponse response = new GetCreditCardResponse();
 		CreditCard creditCard = CreditCardTable.get(db).findByCardNumber(request.getCardNumber());
 
@@ -143,7 +147,7 @@ public class TestService extends roth.example.service.Service {
 	@ServiceMethod(api = true, ajax = false)
 	public LinkedList<GetCreditCardResponse> getAllCreditCardWithExpirationDateGreaterThanOrEquals(
 			GetCreditCardRequest request) {
-		
+
 		LinkedList<CreditCard> creditCards = CreditCardTable.get(db)
 				.findAllByExpirationDateGreaterThanOrEquals(request.getExpirationDate());
 
@@ -165,4 +169,36 @@ public class TestService extends roth.example.service.Service {
 
 		return responses;
 	}
+
+	// Service methods for Driving License
+	@ServiceMethod(api = true, ajax = false)
+	public GetDrivingLicenseResponse getDrivingLicenseById(GetDrivingLicenseRequest request) {
+
+		GetDrivingLicenseResponse response = new GetDrivingLicenseResponse();
+		DrivingLicense drivingLicense = DrivingLicenseTable.get(db).findById(request.getId());
+
+		if (drivingLicense != null) {
+			System.out.println("******************");
+			response.setId(drivingLicense.getId()).setLicenseNumber(drivingLicense.getLicenseNumber())
+					.setIssueDate(drivingLicense.getIssueDate()).setPersonId(drivingLicense.getPersonId());
+		}
+		System.out.println("******************");
+		return response;
+	}
+
+	@ServiceMethod(api = true, ajax = false)
+	public GetDrivingLicenseResponse getDrivingLicenseByNumber(GetDrivingLicenseRequest request) {
+
+		GetDrivingLicenseResponse response = new GetDrivingLicenseResponse();
+		DrivingLicense drivingLicense = DrivingLicenseTable.get(db).findByLicenseNumber(request.getLicenseNumber());
+
+		if (drivingLicense != null) {
+			System.out.println("******************");
+			response.setId(drivingLicense.getId()).setLicenseNumber(drivingLicense.getLicenseNumber())
+					.setIssueDate(drivingLicense.getIssueDate()).setPersonId(drivingLicense.getPersonId());
+		}
+		System.out.println("******************");
+		return response;
+	}
+	
 }
