@@ -1,7 +1,5 @@
 package roth.example.service.test;
 
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.LinkedList;
 
 import roth.example.data.model.CreditCard;
@@ -178,11 +176,10 @@ public class TestService extends roth.example.service.Service {
 		DrivingLicense drivingLicense = DrivingLicenseTable.get(db).findById(request.getId());
 
 		if (drivingLicense != null) {
-			System.out.println("******************");
 			response.setId(drivingLicense.getId()).setLicenseNumber(drivingLicense.getLicenseNumber())
 					.setIssueDate(drivingLicense.getIssueDate()).setPersonId(drivingLicense.getPersonId());
 		}
-		System.out.println("******************");
+		
 		return response;
 	}
 
@@ -193,11 +190,10 @@ public class TestService extends roth.example.service.Service {
 		DrivingLicense drivingLicense = DrivingLicenseTable.get(db).findByLicenseNumber(request.getLicenseNumber());
 
 		if (drivingLicense != null) {
-			System.out.println("******************");
 			response.setId(drivingLicense.getId()).setLicenseNumber(drivingLicense.getLicenseNumber())
 					.setIssueDate(drivingLicense.getIssueDate()).setPersonId(drivingLicense.getPersonId());
 		}
-		System.out.println("******************");
+		
 		return response;
 	}
 

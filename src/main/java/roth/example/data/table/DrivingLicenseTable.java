@@ -1,8 +1,5 @@
 package roth.example.data.table;
 
-import java.sql.Date;
-import java.util.LinkedList;
-
 import roth.example.data.Db;
 import roth.example.data.model.DrivingLicense;
 import roth.lib.java.jdbc.Jdbc;

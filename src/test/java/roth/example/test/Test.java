@@ -21,14 +21,14 @@ public class Test {
 
 	public static void main(String[] args) throws Exception {
 
-		// getPerson();
+		getPerson();
 
-		// invoiceServiceCalls();
+		invoiceServiceCalls();
 
-		// creditCardServiceCalls();
+		creditCardServiceCalls();
 
-		// drivingLicenseServiceCalls();
-		
+		drivingLicenseServiceCalls();
+
 		postInvoice();
 
 	}
@@ -107,17 +107,19 @@ public class Test {
 		getBy("NUMBER");
 		getDrivingLicenseByNumber();
 	}
-	
+
 	// Insert data into models
 	public static void postInvoice() {
 		PostInvoiceRequest request = new PostInvoiceRequest();
-		
+
 		request.setInvoiceNumber("31501");
 		request.setTotalAmount(100.0);
 		request.setPaid(true);
 		request.setPersonId(1);
-		
+
+		delimiterFor("Insert");
+
 		client.postInvoice(request);
-		
+
 	}
 }
