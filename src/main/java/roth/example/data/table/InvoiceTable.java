@@ -55,7 +55,7 @@ public class InvoiceTable extends MysqlDbTable<Invoice> {
 		return findAllBy(select);
 	}
 	
-	public void insertInvoice(PostInvoiceRequest request) {
+	public Invoice insertInvoice(PostInvoiceRequest request) {
 		Invoice invoice = new Invoice(db);
 		
 		invoice.setInvoiceNumber(request.getInvoiceNumber());
@@ -63,7 +63,7 @@ public class InvoiceTable extends MysqlDbTable<Invoice> {
 		invoice.setPaid(request.isPaid());
 		invoice.setPersonId(request.getPersonId());
 		
-		invoice.insert();
+		return invoice.insert();
 		
 	}
 }

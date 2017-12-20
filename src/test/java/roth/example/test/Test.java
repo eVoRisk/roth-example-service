@@ -112,8 +112,7 @@ public class Test {
 	public static void postInvoice() {
 		PostInvoiceRequest request = new PostInvoiceRequest();
 		
-		request.setId(50);
-		request.setInvoiceNumber("34500");
+		request.setInvoiceNumber("31501");
 		request.setTotalAmount(100.0);
 		request.setPaid(true);
 		request.setPersonId(1);

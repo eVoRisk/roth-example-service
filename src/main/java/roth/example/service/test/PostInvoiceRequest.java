@@ -8,9 +8,6 @@ import roth.lib.java.service.HttpServiceRequest;
 @SuppressWarnings("serial")
 public class PostInvoiceRequest extends HttpServiceRequest {
 
-	@Property(name = "id")
-	protected int id;
-
 	@Property(name = "invoiceNumber")
 	protected String invoiceNumber;
 
@@ -24,15 +21,6 @@ public class PostInvoiceRequest extends HttpServiceRequest {
 	protected int personId;
 
 	// Setters and getters
-	public int getId() {
-		return id;
-	}
-
-	public PostInvoiceRequest setId(int id) {
-		this.id = id;
-		return this;
-	}
-
 	public String getInvoiceNumber() {
 		return invoiceNumber;
 	}

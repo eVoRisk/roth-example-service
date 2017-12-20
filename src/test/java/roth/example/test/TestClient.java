@@ -72,7 +72,7 @@ public class TestClient extends JsonApiClient<Object, Object> {
 	
 	// Insert data into models
 	public PostInvoiceResponse postInvoice(PostInvoiceRequest request) {
-		return post(url().addPath("postInvoice"), request);
+		return post(url().addPath("postInvoice"), request, PostInvoiceResponse.class);
 	}
 
 }

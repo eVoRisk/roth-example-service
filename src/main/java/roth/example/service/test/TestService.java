@@ -200,11 +200,21 @@ public class TestService extends roth.example.service.Service {
 		System.out.println("******************");
 		return response;
 	}
-	
+
 	// Insert data into models
 	@ServiceMethod(api = true, ajax = false)
-	public void postInvoice(PostInvoiceRequest request) {
-		InvoiceTable.get(db).insertInvoice(request);
+	public PostInvoiceResponse postInvoice(PostInvoiceRequest request) {
+
+		Invoice invoice = InvoiceTable.get(db).insertInvoice(request);
+		PostInvoiceResponse response = new PostInvoiceResponse();
+
+		if (invoice != null) {
+			response.setId(invoice.getId()).setInvoiceNumber(invoice.getInvoiceNumber())
+					.setTotalAmount(invoice.getTotalAmount()).setPaid(invoice.isPaid())
+					.setPersonId(invoice.getPersonId());
+		}
+
+		return response;
 	}
-	
+
 }
